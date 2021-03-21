@@ -20,14 +20,17 @@ repositories {
 
 ext {
 	set('testcontainersVersion', "1.15.2")
+	set('jdbiVersion', "3.18.0")
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-// https://mvnrepository.com/artifact/org.jdbi/jdbi3-spring4
-  implementation 'org.jdbi:jdbi3-spring4:3.18.0'
-	implementation 'org.flywaydb:flyway-core'
+	// https://mvnrepository.com/artifact/org.jdbi/jdbi3-spring4
+  	implementation "org.jdbi:jdbi3-spring4:${jdbiVersion}"
+	implementation "org.jdbi:jdbi3-sqlobject:${jdbiVersion}"
+	implementation "org.jdbi:jdbi3-postgres:${jdbiVersion}"
+	implementation "org.flywaydb:flyway-core"
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
