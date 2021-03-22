@@ -19,10 +19,11 @@ public class GroceryPosPostgresContainer extends PostgreSQLContainer<GroceryPosP
     public static synchronized GroceryPosPostgresContainer getInstance() {
         if (container == null) {
             container = new GroceryPosPostgresContainer();
-            Flyway.configure()
+            container.start();
+            Flyway flyway = Flyway.configure()
                     .dataSource(container.getJdbcUrl(), container.getUsername(), container.getPassword())
-                    .load()
-                    .migrate();
+                    .load();
+            flyway.migrate();
         }
         return container;
     }
