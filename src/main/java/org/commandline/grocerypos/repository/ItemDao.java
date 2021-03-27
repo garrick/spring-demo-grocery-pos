@@ -12,11 +12,11 @@ import java.util.List;
 public
 interface ItemDao {
 
-    @SqlUpdate
+    @SqlUpdate("insert into items(displayname, description) values (:displayname, :description)")
     @GetGeneratedKeys
-    Long insert(@BindBean Item item);
+    Long insert(@BindBean Item items);
 
-    @SqlQuery("select * from item")
+    @SqlQuery("select * from items")
     @RegisterBeanMapper(Item.class)
     List<Item> findAll();
 }
