@@ -9,10 +9,10 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
-public
-interface ItemDao {
+public interface ItemDao {
 
-    @SqlUpdate("insert into items(displayname, description) values (:displayname, :description)")
+    @SqlUpdate("insert into items(displayname, description) " +
+            "values (:displayname, :description)")
     @GetGeneratedKeys
     Long insert(@BindBean Item items);
 

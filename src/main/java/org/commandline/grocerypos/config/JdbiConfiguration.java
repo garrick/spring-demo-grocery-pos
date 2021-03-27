@@ -1,6 +1,7 @@
 package org.commandline.grocerypos.config;
 
 import org.commandline.grocerypos.repository.ItemDao;
+import org.commandline.grocerypos.repository.ItemPriceDao;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.postgres.PostgresPlugin;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
@@ -33,6 +34,11 @@ public class JdbiConfiguration {
     @Bean
     public ItemDao itemDao(Jdbi jdbi) {
         return jdbi.onDemand(ItemDao.class);
+    }
+
+    @Bean
+    public ItemPriceDao itemPriceDao(Jdbi jdbi) {
+        return jdbi.onDemand(ItemPriceDao.class);
     }
 
 }
