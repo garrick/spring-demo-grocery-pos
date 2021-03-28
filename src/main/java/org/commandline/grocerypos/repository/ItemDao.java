@@ -17,7 +17,6 @@ public interface ItemDao {
     @GetGeneratedKeys
     Long insert(@BindBean Item items);
 
-    //@SqlQuery("select * from items")
     @SqlQuery
     @RegisterBeanMapper(Item.class)
     List<Item> findAll();

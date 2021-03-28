@@ -1,6 +1,7 @@
 package org.commandline.grocerypos.dto;
 
 import lombok.Data;
+import lombok.NonNull;
 import org.commandline.grocerypos.model.Item;
 import org.commandline.grocerypos.model.ItemPrice;
 
@@ -12,13 +13,13 @@ public class LineItemDTO {
     private final Integer price;
     private Integer quantity = 1;
 
-    public LineItemDTO(Item item, ItemPrice itemPrice) {
+    public LineItemDTO(@NonNull Item item, @NonNull ItemPrice itemPrice) {
         this.displayName = item.getDisplayname();
         this.description = item.getDescription();
         this.price = itemPrice.getPrice();
     }
 
-    public LineItemDTO(Item item, ItemPrice itemPrice, Integer quantity) {
+    public LineItemDTO(@NonNull Item item, @NonNull ItemPrice itemPrice, @NonNull Integer quantity) {
         this(item, itemPrice);
         this.quantity = quantity;
     }
