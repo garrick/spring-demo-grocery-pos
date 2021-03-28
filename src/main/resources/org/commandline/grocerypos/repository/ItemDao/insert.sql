@@ -1,0 +1,1 @@
+insert into items(displayname, description) values (:displayname, :description);

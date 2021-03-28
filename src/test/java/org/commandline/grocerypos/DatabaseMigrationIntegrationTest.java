@@ -41,15 +41,11 @@ public class DatabaseMigrationIntegrationTest {
     public void testItemsAndItemPrices() {
         assertEquals(0, itemDao.findAll().size(), "We should have ZERO items");
         assertEquals(0, itemPriceDao.findAll().size(), "We should have ZERO items");
-        Item itemOne = new Item();
-        itemOne.setDisplayname("Slurm");
-        itemOne.setDescription("It's Highly Addictive!");
+        Item itemOne = new Item("Slurm", "It's Highly Addictive!");
         Long slurm_item_id = itemDao.insert(itemOne);
         assertTrue(slurm_item_id >= 1);
         assertEquals(1, itemDao.findAll().size(), "We should have ONE item");
-        ItemPrice itemPriceOne = new ItemPrice();
-        itemPriceOne.setItem_id(slurm_item_id);
-        itemPriceOne.setPrice(150);
+        ItemPrice itemPriceOne = new ItemPrice(slurm_item_id, 150);
         itemPriceOne.setStart_date( LocalDateTime.parse("1999-11-14T20:00:00"));
         itemPriceOne.setEnd_date(   LocalDateTime.parse("2999-12-31T23:59:59"));
         Long slurm_price_id = itemPriceDao.insert(itemPriceOne);

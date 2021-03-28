@@ -1,0 +1,1 @@
+SELECT * FROM items ORDER BY displayname;
