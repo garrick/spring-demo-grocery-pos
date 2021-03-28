@@ -26,6 +26,7 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	// https://mvnrepository.com/artifact/org.jdbi/jdbi3-spring4
   	implementation "org.jdbi:jdbi3-spring4:${jdbiVersion}"
 	implementation "org.jdbi:jdbi3-sqlobject:${jdbiVersion}"

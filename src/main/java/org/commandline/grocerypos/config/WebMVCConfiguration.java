@@ -11,12 +11,15 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"org.commandline.grocerypos.controller"})
 public class WebMVCConfiguration {
 
         @Bean
         public ViewResolver freemarkerViewResolver() {
-            ViewResolver resolver = new FreeMarkerViewResolver();
+            FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+            resolver.setCache(false);
+            resolver.setPrefix("");
+            resolver.setSuffix(".ftl");
             return resolver;
         }
 
