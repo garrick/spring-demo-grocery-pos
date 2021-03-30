@@ -1,3 +1,5 @@
+<#-- @implicitly included -->
+<#-- @ftlvariable name="model.items" type="org.commandline.grocerypos.dto.ItemList" -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
@@ -52,7 +54,12 @@
     </style>
 </head>
 <body>
-<h1>Hello, world!</h1>
-<h2>Special shout out to ${model.luser}</h2>
+<h1>Hello, POS motherfucker 2!</h1>
+<form action="/index" method="post">
+    <!-- wtf is going on here? -->
+    <input type="hidden" name="currentItemIds" value="${model.items.streamOut()}"/>
+    <input type="text" name="nextItemId" value=""/>
+    <input type="button" value="Submit"/>
+</form>
 </body>
 </html>
