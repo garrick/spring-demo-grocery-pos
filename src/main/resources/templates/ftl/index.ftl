@@ -59,7 +59,7 @@
     <!-- wtf is going on here? -->
     <input type="hidden" name="currentItemIds" value="${model.items.streamOut()}"/>
     <input type="text" name="nextItemId" value=""/>
-    <input type="button" value="Submit"/>
+    <input type="submit" value="Add Item"/>
 </form>
 </body>
 </html>
