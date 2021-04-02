@@ -54,10 +54,16 @@
     </style>
 </head>
 <body>
-<h1>Hello, POS motherfucker 2!</h1>
+<h1>Hello, POS system!</h1>
+<ol>
+<#list model.itemList.currentItemIds as anId>
+<li>
+    Item: #${anId}
+</li>
+</#list>
+</ol>
 <form action="/index" method="post">
-    <!-- wtf is going on here? -->
-    <input type="hidden" name="currentItemIds" value="${model.items.streamOut()}"/>
+    <input type="hidden" name="currentItemIds" value="${model.itemList.streamOut}"/>
     <input type="text" name="nextItemId" value=""/>
     <input type="submit" value="Add Item"/>
 </form>

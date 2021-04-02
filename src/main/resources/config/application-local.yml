@@ -3,3 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: docker
+  freemarker:
+    cache: false
+    prefer-file-system-access: true
+    template-loader-path: file:${user.home}/CapstoneSpring2021/GitHub/spring-demo-grocery-pos/src/main/resources/templates/ftl

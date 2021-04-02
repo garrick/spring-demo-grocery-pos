@@ -7,10 +7,19 @@ import java.util.List;
 
 @Data
 public class ItemList {
-    public ArrayList<Integer> currentItemIds = new ArrayList<>();
-    public Integer additionalItemId = -1;
 
-    public String streamOut(){
+    public ArrayList<Integer> currentItemIds = new ArrayList<>();
+    public Integer nextItemId = -1;
+
+    public ItemList() {
+    }
+
+    public ItemList(ItemList source) {
+        currentItemIds.addAll(source.currentItemIds);
+        currentItemIds.add(source.nextItemId);
+    }
+
+    public String getStreamOut(){
         List<String> itemStrings = new ArrayList<>();
         for (Integer integerId: currentItemIds) {
             itemStrings.add(integerId.toString());
