@@ -3,6 +3,8 @@ package org.commandline.grocerypos.controller;
 import org.commandline.grocerypos.dto.ItemList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.springframework.ui.ModelMap;
 
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class ReceiptControllerTest {
 
     private ReceiptController unit;

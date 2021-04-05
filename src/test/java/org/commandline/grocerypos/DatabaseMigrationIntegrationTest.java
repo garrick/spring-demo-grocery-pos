@@ -5,6 +5,7 @@ import org.commandline.grocerypos.model.ItemPrice;
 import org.commandline.grocerypos.repository.ItemDao;
 import org.commandline.grocerypos.repository.ItemPriceDao;
 import org.commandline.grocerypos.testutil.GroceryPosPostgresContainer;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Tag("integration")
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(initializers = DatabaseMigrationIntegrationTest.Initializer.class)

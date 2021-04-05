@@ -3,9 +3,12 @@ package org.commandline.grocerypos.dto;
 import org.commandline.grocerypos.model.Item;
 import org.commandline.grocerypos.model.ItemPrice;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class LineItemDTOTest {
 
     @Test
