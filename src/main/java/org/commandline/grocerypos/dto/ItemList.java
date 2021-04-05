@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class ItemList {
 
-    public ArrayList<Integer> currentItemIds = new ArrayList<>();
+    public List<Integer> currentItemIds = new ArrayList<>();
     public Integer nextItemId = -1;
 
     public ItemList() {

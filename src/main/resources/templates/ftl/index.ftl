@@ -57,6 +57,7 @@
 <h1>Hello, POS system!</h1>
 <ol>
 <#list model.itemList.currentItemIds as anId>
+    <!-- Rendering List of Items -->
 <li>
     Item: #${anId}
 </li>
