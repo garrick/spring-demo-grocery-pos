@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-<h1>Hello, POS system!</h1>
+<h1 id="greeting" >Hello, POS system!</h1>
 <ol>
 <#list model.itemList.currentItemIds as anId>
     <!-- Rendering List of Items -->

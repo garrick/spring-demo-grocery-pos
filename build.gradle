@@ -36,7 +36,10 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
-  testCompile "org.testcontainers:postgresql:${testcontainersVersion}"
+  	testCompile "org.testcontainers:postgresql:${testcontainersVersion}"
+	testImplementation "org.testcontainers:selenium:${testcontainersVersion}"
+	testImplementation "org.seleniumhq.selenium:selenium-remote-driver"
+	testImplementation "org.seleniumhq.selenium:selenium-chrome-driver"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
 	testImplementation "org.junit.platform:junit-platform-runner"

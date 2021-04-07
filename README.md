@@ -11,3 +11,5 @@ Please see:
 src/main/resources/config/application-local.yml
 ```
 
+Some credits: 
+1. https://rieckpil.de/spring-boot-functional-tests-with-selenium-and-testcontainers/ 
