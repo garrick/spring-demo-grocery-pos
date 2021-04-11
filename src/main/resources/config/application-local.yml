@@ -3,6 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: docker
+  flyway:
+    locations: classpath:/db/migration
   freemarker:
     cache: false
     prefer-file-system-access: true
