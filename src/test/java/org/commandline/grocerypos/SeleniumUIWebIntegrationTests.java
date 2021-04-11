@@ -30,5 +30,6 @@ public class SeleniumUIWebIntegrationTests {
         this.container.getWebDriver().get("http://host.docker.internal:" + port + "/index");
         WebElement messageElement = this.container.getWebDriver().findElementById("greeting");
         assertEquals("Hello, POS system!", messageElement.getText());
+
     }
 }

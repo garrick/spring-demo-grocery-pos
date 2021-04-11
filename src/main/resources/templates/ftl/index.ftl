@@ -54,18 +54,20 @@
     </style>
 </head>
 <body>
-<h1 id="greeting" >Hello, POS system!</h1>
-<ol>
-<#list model.itemList.currentItemIds as anId>
-    <!-- Rendering List of Items -->
-<li>
-    Item: #${anId}
-</li>
-</#list>
-</ol>
+<h1 id="greeting">Hello, POS system!</h1>
+<#if model.lineItemDtoList??>
+    <ol>
+        <#list model.lineItemDtoList as aLineItem>
+            <!-- Rendering List of Items -->
+            <li>
+                Item: #${aLineItem.id} ${aLineItem.displayName}, ${(aLineItem.price/100)?string.currency}
+            </li>
+        </#list>
+    </ol>
+</#if>
 <form action="/index" method="post">
     <input type="hidden" name="currentItemIds" value="${model.itemList.streamOut}"/>
-    <input type="text" name="nextItemId" value=""/>
+    <input type="text" id="nextItemId" name="nextItemId" value=""/>
     <input type="submit" value="Add Item"/>
 </form>
 </body>

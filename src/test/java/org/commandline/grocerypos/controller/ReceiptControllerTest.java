@@ -1,13 +1,18 @@
 package org.commandline.grocerypos.controller;
 
 import org.commandline.grocerypos.dto.ItemList;
+import org.commandline.grocerypos.dto.LineItemDTO;
+import org.commandline.grocerypos.dto.TestDataLineItemDTOBuilder;
+import org.commandline.grocerypos.service.LineItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.springframework.ui.ModelMap;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,11 +22,14 @@ public class ReceiptControllerTest {
 
     private ReceiptController unit;
     private ModelMap map;
+    private LineItemService fakeLineItemService;
+    private TestDataLineItemDTOBuilder lineItemDTOBuilder = new TestDataLineItemDTOBuilder();
 
     @BeforeEach
     public void setUp(){
         map = new ModelMap();
-        unit = new ReceiptController();
+        fakeLineItemService = new FakeLineItemService();
+        unit = new ReceiptController(fakeLineItemService);
     }
 
     @Test
@@ -33,7 +41,7 @@ public class ReceiptControllerTest {
     }
 
     @Test
-    public void testPostIndexReturnPopulatedDtoWithIndexTemplate() {
+    public void testPostIndexReturnPopulatedDtoWithIndexTemplateAndLooksUpLineItemDTOs() {
         ItemList currentItemList = new ItemList();
         currentItemList.currentItemIds = Arrays.asList(7,9);
         currentItemList.nextItemId = 11;
@@ -41,5 +49,19 @@ public class ReceiptControllerTest {
         ItemList newItemList = (ItemList) map.get("itemList");
         assertEquals(Arrays.asList(7,9,11), newItemList.currentItemIds);
         assertEquals(-1, newItemList.nextItemId);
+        List<LineItemDTO> lineItemDtoList = (List<LineItemDTO>) map.get("lineItemDtoList");
+        assertEquals(1, lineItemDtoList.size());
+        LineItemDTO slurm = lineItemDtoList.get(0);
+        assertEquals(TestDataLineItemDTOBuilder.SLURM_DISPLAY_NAME, slurm.getDisplayName());
+        assertEquals(TestDataLineItemDTOBuilder.SLURM_PRICE, slurm.getPrice());
+        assertEquals(TestDataLineItemDTOBuilder.QUANTITY_ONE, slurm.getQuantity());
+    }
+
+    private class FakeLineItemService implements LineItemService {
+        @Override
+        public List<LineItemDTO> lookupLineItemDTOsByIds(List<Long> itemIds) {
+
+            return new ArrayList<LineItemDTO>(Arrays.asList(lineItemDTOBuilder.buildSlurm()));
+        }
     }
 }

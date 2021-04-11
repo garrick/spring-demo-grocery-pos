@@ -1,6 +1,7 @@
 package org.commandline.grocerypos.service;
 
 import org.commandline.grocerypos.dto.LineItemDTO;
+import org.commandline.grocerypos.dto.TestDataLineItemDTOBuilder;
 import org.commandline.grocerypos.repository.FakeItemPriceDao;
 import org.commandline.grocerypos.repository.ItemPriceDao;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,16 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Execution(ExecutionMode.CONCURRENT)
 public class LineItemServiceStandardTest {
 
-    private String SLURM_DISPLAY_NAME = "Slurm";
-    private Integer SLURM_PRICE = 150;
-    private Integer SLURM_QUANTITY = 1;
+
     private LineItemService itemService;
-    private LineItemDTO slurmDto = new LineItemDTO();
-    {
-        slurmDto.setQuantity(SLURM_QUANTITY);
-        slurmDto.setPrice(SLURM_PRICE);
-        slurmDto.setDisplayName(SLURM_DISPLAY_NAME);
-    }
+    private LineItemDTO slurmDto = new TestDataLineItemDTOBuilder().buildSlurm();
 
     @BeforeEach
     public void setUp(){
@@ -48,8 +42,8 @@ public class LineItemServiceStandardTest {
         List<LineItemDTO> lineItemDTOS = itemService.lookupLineItemDTOsByIds(new ArrayList<>(Arrays.asList(1L)) {
         });
         LineItemDTO actual = lineItemDTOS.get(0);
-        assertEquals(SLURM_QUANTITY, actual.getQuantity());
-        assertEquals(SLURM_DISPLAY_NAME, actual.getDisplayName());
-        assertEquals(SLURM_PRICE, actual.getPrice());
+        assertEquals(TestDataLineItemDTOBuilder.QUANTITY_ONE, actual.getQuantity());
+        assertEquals(TestDataLineItemDTOBuilder.SLURM_DISPLAY_NAME, actual.getDisplayName());
+        assertEquals(TestDataLineItemDTOBuilder.SLURM_PRICE, actual.getPrice());
     }
 }

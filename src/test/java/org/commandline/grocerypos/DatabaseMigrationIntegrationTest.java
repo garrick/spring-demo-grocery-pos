@@ -1,6 +1,5 @@
 package org.commandline.grocerypos;
 
-import org.apache.tomcat.jni.Local;
 import org.commandline.grocerypos.dto.LineItemDTO;
 import org.commandline.grocerypos.model.Item;
 import org.commandline.grocerypos.model.ItemPrice;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import javax.sound.sampled.Line;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +64,7 @@ public class DatabaseMigrationIntegrationTest {
         List<LineItemDTO> lineItemDTOs = itemPriceDao.findByIds(Arrays.asList(1L));
         assertEquals(1,lineItemDTOs.size(), "We should have ONE LineItemDTO");
         LineItemDTO oneLineItem = lineItemDTOs.get(0);
+        assertEquals(slurm_item_id, oneLineItem.getId());
         assertEquals(SLURM_DISPLAY_NAME, oneLineItem.getDisplayName());
         assertEquals(SLURM_DESCRIPTION, oneLineItem.getDescription());
         assertEquals(150, oneLineItem.getPrice());

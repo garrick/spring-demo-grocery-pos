@@ -8,15 +8,17 @@ import org.commandline.grocerypos.model.ItemPrice;
 @Data
 public class LineItemDTO {
 
+    private Long id;
     private String displayName;
     private String description;
     private Integer price;
     private Integer quantity = 1;
 
-   public LineItemDTO(){
-   }
+    public LineItemDTO() {
+    }
 
     public LineItemDTO(@NonNull Item item, @NonNull ItemPrice itemPrice) {
+        this.id = item.getId();
         this.displayName = item.getDisplayname();
         this.description = item.getDescription();
         this.price = itemPrice.getPrice();
