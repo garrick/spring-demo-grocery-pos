@@ -75,7 +75,7 @@ set of tools to build network based applications on.
 1. JDBI 3 - After all my years fighting ORM systems you will *NOT* convince me to use one 
    of my own free will.  Do yourself a favor and read [this](https://blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/).
 1. Flyway - I've used Liquibase, I just like Flyway better.  Don't do SQL based projects w/o a DB migration tool.
-1. Freemarker - Your data layer should be simple & stupid.  Freemarker is dumb in a good way,
+1. Freemarker - Your UI layer in MVC should be simple & stupid.  Freemarker is dumb in a good way,
 making it easy to push what might be UI edge cases down to faster running integration tests. 
 
 ### The Tests
