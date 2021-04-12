@@ -1,7 +1,7 @@
 # Spring Demo Grocery POS*
 #### *Point Of Sale System
 
-##An executable, opinionated example of why, where, and how to write tests in a way that supports XP/Agile engineering practices.
+## An executable, opinionated example of why, where, and how to write tests in a way that supports XP/Agile engineering practices.
 
 This application is written in Spring Boot demonstrating best testing practices focused
 on responsibilities of components by layers with an emphasis on highly performant unit testing.
@@ -29,21 +29,21 @@ Sounds easy, but it's hard.  Let's start with some definitions:
 ![I do not think it means...](./doc/image/UnitTestingAsTestersTyping.jpg)
 
 ## Some Testing Definitions
-###Unit Test
+### Unit Test
 A test that executes rapidly, using only CPU and RAM.  Can easily be run concurrently on multiple
 CPU threads if configured properly.  The IDEAL location for business logic. 
 
-###Integration/Service Test 
+### Integration/Service Test 
 Some levels of work have to be done to provide service outside of pure RAM and CPU of course.  This typically 
 falls to the realm of external web services, databases and the like.  These typically involve using a stubbed service 
 and exercising more of the application stack (e.g. database layer testing, restful client testing).
 
-###UI Tests
+### UI Tests
 UI Tests simulate the full activity of a user using the system.  In the case of many web based applications, that
 means starting up a web browser and directing it to simulate user activity.
 
 
-##The 'Hello, POS system!'
+## The 'Hello, POS system!'
 ### The example
 This example system is a [Java 11](https://openjdk.java.net/projects/jdk/11/) 
 [Spring Boot](https://spring.io/projects/spring-boot) 
@@ -100,7 +100,7 @@ I'm putting this out there to show and tell.  I may or may not put some upgrades
 to drive functionality.
 
 
-##Current setup
+## Current setup
 1. JDK 11
 1. You'll need to have Docker installed and working
 1. PostgreSQL configured as indicated below
@@ -110,11 +110,11 @@ Please see:
 src/main/resources/config/application-local.yml
 ```
 
-##Warnings
+## Warnings
 I've only tested/run this on MacOS.  It should work with properly configured Linux or Windows.  
 If you have any success/failures with it, feel free to drop me a note. 
 
-Some credits: 
+## Some credits: 
 1. https://martinfowler.com/bliki/TestPyramid.html
 1. https://willowtreeapps.com/ideas/test-early-test-often-automation-testing-with-the-test-pyramid    
 1. https://formulusblack.com/blog/compute-performance-distance-of-data-as-a-measure-of-latency/   
