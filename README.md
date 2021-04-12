@@ -103,9 +103,11 @@ I'm putting this out there to show and tell.  I may or may not put some upgrades
 ## Future goals (if I get around to them)
 1. Full build on GitHub Actions, just to be cool
 1. Clean up the TestSuites and/or isolate unit from integration/service & UI better
-1. Pin down the build.gradle 
+1. Pin down the various dependency versions in build.gradle (it's a bit TOO casual right now)
 1. Put some dorky CSS coloring and imaging on it
 1. Better documentation
+1. I'm usually not a fan of comments, but since the purpose is to demonstrate XP testing
+   and design concepts, I should probably "speak up" a bit inline.
 1. Clean it up enough to use it as a base for an XP Lab with a set of customer stories 
 to drive functionality.
 
@@ -113,16 +115,15 @@ to drive functionality.
 ## Current setup
 1. JDK 11
 1. You'll need to have Docker installed and working
-1. PostgreSQL configured as indicated below
-Please see:
+1. PostgreSQL configured as indicated (or changed) here:
 
 ```shell
 src/main/resources/config/application-local.yml
 ```
 
 ## Warnings
-I've only tested/run this on MacOS.  It should work with properly configured Linux or Windows.  
-If you have any success/failures with it, feel free to drop me a note. 
+I've only tested/run this on MacOS.  It should work with properly configured Linux or 
+Windows.  If you have any success/failures with it, feel free to drop me a note. 
 
 ## Some credits: 
 1. https://martinfowler.com/bliki/TestPyramid.html
