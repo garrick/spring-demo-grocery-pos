@@ -3,6 +3,7 @@ package org.commandline.grocerypos.controller;
 import org.commandline.grocerypos.dto.ItemList;
 import org.commandline.grocerypos.dto.LineItemDTO;
 import org.commandline.grocerypos.service.LineItemService;
+import org.commandline.grocerypos.service.TotalItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,10 +18,12 @@ import java.util.stream.Collectors;
 public class ReceiptController {
 
     private LineItemService lineItemService;
+    private TotalItemService totalItemService;
 
-    public ReceiptController(@Autowired LineItemService fakeLineItemService) {
+    public ReceiptController(@Autowired LineItemService fakeLineItemService, @Autowired TotalItemService totalItemService) {
 
         this.lineItemService = fakeLineItemService;
+        this.totalItemService = totalItemService;
     }
 
     @GetMapping("/index")
@@ -36,6 +39,7 @@ public class ReceiptController {
         List<LineItemDTO> lineItemDTOS = lineItemService.lookupLineItemDTOsByIds(logIds);
         model.addAttribute("itemList", newList);
         model.addAttribute("lineItemDtoList", lineItemDTOS);
+        model.addAttribute("total", totalItemService.computeTotalPrice(lineItemDTOS));
         return "index";
     }
 }

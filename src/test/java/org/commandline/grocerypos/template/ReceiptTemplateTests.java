@@ -62,9 +62,10 @@ public class ReceiptTemplateTests {
             lineItemDTOList.add(dataLineItemDTOBuilder.buildBuzzCola());
             HashMap itemListMap = new HashMap();
             ItemList realItemList = new ItemList();
-            realItemList.currentItemIds = Arrays.asList(7,9);
+            realItemList.currentItemIds = Arrays.asList(1,2);
             itemListMap.put("itemList", realItemList);
             itemListMap.put("lineItemDtoList", lineItemDTOList);
+            itemListMap.put("total", 325);
             HashMap modelMap = new HashMap();
             modelMap.put("model", itemListMap);
             template.process(modelMap, fakeOut);
@@ -74,7 +75,8 @@ public class ReceiptTemplateTests {
             assertTrue(output.contains(itemListIndicatorComment));                  //We have items in our list
             assertTrue(output.contains("Item: #1 Slurm, $1.50"));                                //Two items, to be specific
             assertTrue(output.contains("Item: #2 Buzz Cola, $1.75"));
-            assertTrue(output.contains("name=\"currentItemIds\" value=\"7,9\""));   //Our form should be populated
+            assertTrue(output.contains("Total: $3.25"));
+            assertTrue(output.contains("name=\"currentItemIds\" value=\"1,2\""));   //Our form should be populated
         } catch (Exception e) {
             fail("Rut-roh, Raggy!" + e.getMessage());
         }

@@ -4,6 +4,7 @@ import org.commandline.grocerypos.dto.ItemList;
 import org.commandline.grocerypos.dto.LineItemDTO;
 import org.commandline.grocerypos.dto.TestDataLineItemDTOBuilder;
 import org.commandline.grocerypos.service.LineItemService;
+import org.commandline.grocerypos.service.TotalItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
@@ -23,13 +24,15 @@ public class ReceiptControllerTest {
     private ReceiptController unit;
     private ModelMap map;
     private LineItemService fakeLineItemService;
+    private TotalItemService fakeTotalItemService;
     private TestDataLineItemDTOBuilder lineItemDTOBuilder = new TestDataLineItemDTOBuilder();
 
     @BeforeEach
     public void setUp(){
         map = new ModelMap();
         fakeLineItemService = new FakeLineItemService();
-        unit = new ReceiptController(fakeLineItemService);
+        fakeTotalItemService = new FakeTotalItemService();
+        unit = new ReceiptController(fakeLineItemService, fakeTotalItemService);
     }
 
     @Test
@@ -41,7 +44,7 @@ public class ReceiptControllerTest {
     }
 
     @Test
-    public void testPostIndexReturnPopulatedDtoWithIndexTemplateAndLooksUpLineItemDTOs() {
+    public void testPostIndexReturnPopulatedDtoWithIndexTemplateAndLooksUpLineItemDTOsAndTotals() {
         ItemList currentItemList = new ItemList();
         currentItemList.currentItemIds = Arrays.asList(7,9);
         currentItemList.nextItemId = 11;
@@ -55,6 +58,8 @@ public class ReceiptControllerTest {
         assertEquals(TestDataLineItemDTOBuilder.SLURM_DISPLAY_NAME, slurm.getDisplayName());
         assertEquals(TestDataLineItemDTOBuilder.SLURM_PRICE, slurm.getPrice());
         assertEquals(TestDataLineItemDTOBuilder.QUANTITY_ONE, slurm.getQuantity());
+        Integer total = (Integer) map.get("total");
+        assertEquals(150, total);
     }
 
     private class FakeLineItemService implements LineItemService {
@@ -62,6 +67,14 @@ public class ReceiptControllerTest {
         public List<LineItemDTO> lookupLineItemDTOsByIds(List<Long> itemIds) {
 
             return new ArrayList<LineItemDTO>(Arrays.asList(lineItemDTOBuilder.buildSlurm()));
+        }
+    }
+
+
+    private class FakeTotalItemService implements TotalItemService {
+        @Override
+        public Integer computeTotalPrice(List<LineItemDTO> lineItemDTOList) {
+            return 150;
         }
     }
 }

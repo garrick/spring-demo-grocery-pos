@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <title>Canvas example</title>
+    <title>POS system example</title>
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <style>
         body {
@@ -56,19 +56,25 @@
 <body>
 <h1 id="greeting">Hello, POS system!</h1>
 <#if model.lineItemDtoList??>
-    <ol>
+    <ul>
         <#list model.lineItemDtoList as aLineItem>
             <!-- Rendering List of Items -->
-            <li>
+            <li id="lineItem-${aLineItem.id}">
                 Item: #${aLineItem.id} ${aLineItem.displayName}, ${(aLineItem.price/100)?string.currency}
             </li>
         </#list>
-    </ol>
+    </ul>
+</#if>
+<br>
+<#if model.total??>
+    <div id="total">
+        Total: ${(model.total/100)?string.currency}
+    </div>
 </#if>
 <form action="/index" method="post">
     <input type="hidden" name="currentItemIds" value="${model.itemList.streamOut}"/>
     <input type="text" id="nextItemId" name="nextItemId" value=""/>
-    <input type="submit" value="Add Item"/>
+    <input type="submit" id="submitButton" value="Add Item"/>
 </form>
 </body>
 </html>
