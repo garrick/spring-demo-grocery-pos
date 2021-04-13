@@ -29,14 +29,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	// https://mvnrepository.com/artifact/org.jdbi/jdbi3-spring4
-  	implementation "org.jdbi:jdbi3-spring4:${jdbiVersion}"
+  implementation "org.jdbi:jdbi3-spring4:${jdbiVersion}"
 	implementation "org.jdbi:jdbi3-sqlobject:${jdbiVersion}"
 	implementation "org.jdbi:jdbi3-postgres:${jdbiVersion}"
 	implementation "org.flywaydb:flyway-core"
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
-  	testCompile "org.testcontainers:postgresql:${testcontainersVersion}"
+  testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
 	testImplementation "org.testcontainers:selenium:${testcontainersVersion}"
 	testImplementation "org.seleniumhq.selenium:selenium-remote-driver"
 	testImplementation "org.seleniumhq.selenium:selenium-chrome-driver"
