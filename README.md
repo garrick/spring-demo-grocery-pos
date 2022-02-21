@@ -22,13 +22,13 @@ Not this:
 
 Why?  Simple:
 
-![Computer vs. Human Scale](https://formulusblack.com/wp-content/uploads/2019/02/Screen-Shot-2019-02-01-at-12.16.39-PM.png)
+![Computer vs. Human Scale](https://pbs.twimg.com/media/BmBr2mwCIAAhJo1?format=png&name=medium)
 
-Unit Tests should each run in 10s of milliseconds of real time (RAM/CPU activity), days in comparison to human scale. 
+Unit Tests should each run in 10s of milliseconds of real time (RAM/CPU activity), years in comparison to human scale. 
 
-Integration tests typically hit network and/or disk IO, think years or decades in human comparison.
+Integration tests typically hit network and/or disk IO, think decades or centuries in human comparison.
 
-UI tests are closer to centuries in human scale.
+UI tests are closer to millenia in human scale.
 
 If you think in that comparison, where do you want to focus your time testing as a system 
 continues to grow and change?
