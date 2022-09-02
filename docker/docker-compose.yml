@@ -1,0 +1,16 @@
+version: '3.8'
+services: 
+  db:
+    image: postgres:11
+    container_name: grocerypos
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+    ports:
+      - '5432:5432'
+    volumes:
+      - pos-db:/var/lib/postgresql/data
+volumes:
+  pos-db:
+    driver: local
