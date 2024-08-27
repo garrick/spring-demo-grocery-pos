@@ -3,6 +3,7 @@ package org.commandline.grocerypos;
 import org.commandline.grocerypos.testutil.ScreenshotOnFailureExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -30,15 +31,15 @@ public class SeleniumUIWebIntegrationTests {
     public void testHappyPath() {
         RemoteWebDriver webDriver = this.container.getWebDriver();
         webDriver.get("http://host.docker.internal:" + port + "/index");
-        WebElement messageElement = webDriver.findElementById("greeting");
+        WebElement messageElement = webDriver.findElement(By.id("greeting"));
         assertEquals("Hello, POS system!", messageElement.getText());
-        WebElement input = webDriver.findElementById("nextItemId");
+        WebElement input = webDriver.findElement(By.id("nextItemId"));
         input.sendKeys("1");
-        WebElement submit = webDriver.findElementById("submitButton");
+        WebElement submit = webDriver.findElement(By.id("submitButton"));
         submit.click();
-        WebElement lineItemOne = webDriver.findElementById("lineItem-1");
+        WebElement lineItemOne = webDriver.findElement(By.id("lineItem-1"));
         assertTrue(lineItemOne.getText().contains("Buzz Cola"));
-        WebElement total = webDriver.findElementById("total");
+        WebElement total = webDriver.findElement(By.id("total"));
         assertTrue(total.getText().contains("$1.50"));
     }
 }

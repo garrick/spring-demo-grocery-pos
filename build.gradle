@@ -1,12 +1,12 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.7.18'
+	id 'io.spring.dependency-management' version '1.1.6'
 	id 'java'
 }
 
 group = 'org.commandline'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '21'
 
 configurations {
 	compileOnly {
@@ -22,6 +22,7 @@ ext {
 	set('testcontainersVersion', "1.15.2")
 	set('jdbiVersion', "3.18.0")
 	set('junitJupiterVersion','5.6.2')
+	set('lombokVersion', '1.18.34')
 }
 
 dependencies {
@@ -33,9 +34,9 @@ dependencies {
 	implementation "org.jdbi:jdbi3-sqlobject:${jdbiVersion}"
 	implementation "org.jdbi:jdbi3-postgres:${jdbiVersion}"
 	implementation "org.flywaydb:flyway-core"
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly "org.projectlombok:lombok:${lombokVersion}"
+	runtimeOnly "org.postgresql:postgresql"
+	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
   testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
 	testImplementation "org.testcontainers:selenium:${testcontainersVersion}"
 	testImplementation "org.seleniumhq.selenium:selenium-remote-driver"
